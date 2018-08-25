@@ -1,0 +1,75 @@
+<canvas id="tela" width="600" height="400"></canvas>
+<canvas id="cor1" width="50" height="50"></canvas>
+<canvas id="cor2" width="50" height="50"></canvas>
+<canvas id="cor3" width="50" height="50"></canvas>
+<canvas id="cor4" width="50" height="50"></canvas>
+
+<script>
+
+    var corEscolhida;
+
+    //screen
+
+    var tela = document.getElementById('tela');
+    var c = tela.getContext('2d');
+
+    c.fillStyle = 'gray';
+    c.fillRect(0, 0, 600, 400)
+
+    //paleta vermelha
+
+    var paleta1 = document.getElementById('cor1');
+    var a = paleta1.getContext('2d');
+
+    a.fillStyle = 'red';
+    a.fillRect(0, 0, 600, 400)
+
+    //paleta azul
+
+    var paleta2 = document.getElementById('cor2');
+    var b = paleta2.getContext('2d');
+
+    b.fillStyle = 'blue';
+    b.fillRect(0, 0, 600, 400)
+
+    //paleta amarela
+
+    var paleta3 = document.getElementById('cor3');
+    var b = paleta3.getContext('2d');
+
+    b.fillStyle = 'yellow';
+    b.fillRect(0, 0, 600, 400);
+
+
+    //click functions
+
+    paleta1.onclick = function ()
+    {
+        corEscolhida = "red";
+    }
+
+    paleta2.onclick = function ()
+    {
+        corEscolhida = "blue";
+    }
+
+    paleta3.onclick = function ()
+    {
+        corEscolhida = "yellow";
+    }
+
+    //write on screen
+    tela.onclick = function (evento)
+    {
+        var x = evento.pageX - tela.offsetLeft;
+        var y = evento.pageY - tela.offsetTop;
+
+        c.fillStyle = corEscolhida;
+        c.beginPath();
+        c.arc(x, y, 25, 0, 2 * 3.14);
+        c.fill();
+
+        console.log("posição do clique: " + x + ", " + y);
+    }
+
+</script>
